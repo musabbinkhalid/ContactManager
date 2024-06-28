@@ -1,8 +1,98 @@
-﻿@{
+﻿@model List<ContactManager.Infrastructure.Entities.Contact>
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<div class="row">
+    <div class="col-4">
+        <a asp-action="Create" asp-controller="Home" class="btn btn-info mb-3"> Create Contact </a>
+    </div>
+</div>
+
+<div class="col-12">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Sr. No </th>
+                <th>Name </th>
+                <th>Email </th>
+                <th>Phone </th>
+                <th>Address </th>
+                <th>City</th>
+                <th>Region</th>
+                <th>PostalCode</th>
+                <th>Country</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@(Model.IndexOf(item) + 1)</td>
+                    <td>@item.Name</td>
+                    <td>@item.Email</td>
+                    <td>@item.Phone</td>
+                    <td>@item.Address</td>
+                    <td>@item.City</td>
+                    <td>@item.Region</td>
+                    <td>@item.PostalCode</td>
+                    <td>@item.Country</td>
+                    <td>
+                        <button class="btn btn-xs btn-info" data-bs-toggle="modal" data-bs-target="#viewmodal" data-id="@item.Id">View</button>
+                        <button class="btn btn-xs btn-warning" data-bs-toggle="modal" data-bs-target="#editmodal" data-id="@item.Id">Edit</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!--Edit Modal-->
+<div class="modal inmodal fade" id="viewmodal" data-url="@Url.Action("_viewmodal", "Home", new { Id = "{Id}" })" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h4 class="modal-title">View Contact</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-bs-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!--Edit Modal-->
+<div class="modal inmodal fade" id="editmodal" data-url="@Url.Action("_editmodal", "Home", new { Id = "{Id}" })" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form asp-action="updateContact"
+                  asp-controller="Home"
+                  method="post"
+                  class="form-save"
+                  data-modal="#editmodal"
+                  data-text="Contact updated successfully!">
+                <div class="modal-header">
+
+                    <h4 class="modal-title">Edit Contact</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-info" type="submit">Save</button>
+                    <button type="button" class="btn btn-danger" type="button" onclick="deleteClicked()">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>

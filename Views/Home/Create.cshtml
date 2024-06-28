@@ -1,0 +1,94 @@
+﻿@model ContactManager.Infrastructure.Entities.Contact
+@{
+    ViewData["Title"] = "Create Contact";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Create Contact</h1>
+</div>
+
+
+<form asp-action="Create" asp-controller="Home">
+    <div class="row">
+        <div class="col-8">
+            @* Name *@
+            <div class="form-group  row mb-2">
+                <label class="col-lg-2 col-form-label font-bold">Name</label>
+                <div class="col-lg-10">
+                    <input type="Text" class="form-control" maxlength="50" asp-for="Name" />
+                    <span asp-validation-for="Name"></span>
+                </div>
+            </div>
+            @* Email *@
+            <div class="form-group  row mb-2">
+                <label class="col-lg-2 col-form-label font-bold">Email</label>
+                <div class="col-lg-10">
+                    <input type="Email" class="form-control" asp-for="Email" maxlength="100" />
+                    <span asp-validation-for="Email"></span>
+                </div>
+            </div>
+            @* Phone *@
+            <div class="form-group  row mb-2">
+                <label class="col-lg-2 col-form-label font-bold">Phone</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" asp-for="Phone" maxlength="50" />
+                    <span asp-validation-for="Phone"></span>
+                </div>
+            </div>
+            @* Address *@
+            <div class="form-group  row  mb-2">
+                <label class="col-lg-2 col-form-label font-bold">Address</label>
+                <div class="col-lg-10">
+                    <textarea class="form-control" asp-for="Address" maxlength="500">
+
+                </textarea>
+                    <span asp-validation-for="Address"></span>
+
+                </div>
+            </div>
+            @* City *@
+            <div class="form-group  row  mb-2">
+                <label class="col-lg-2 col-form-label font-bold">City</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" asp-for="City" maxlength="50" />
+                    <span asp-validation-for="City"></span>
+
+
+                </div>
+            </div>
+            @* Region *@
+            <div class="form-group  row  mb-2">
+                <label class="col-lg-2 col-form-label font-bold">Region</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" asp-for="Region" maxlength="50" />
+                    <span asp-validation-for="Region"></span>
+
+
+                </div>
+            </div>
+            @* Country *@
+            <div class="form-group  row  mb-2">
+                <label class="col-lg-2 col-form-label font-bold">Country</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" asp-for="Country" maxlength="50" />
+                    <span asp-validation-for="Country"></span>
+
+
+                </div>
+            </div>
+            @* PostalCode *@
+            <div class="form-group  row mb-2">
+                <label class="col-lg-2 col-form-label font-bold">PostalCode</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" asp-for="PostalCode" maxlength="50" />
+                    <span asp-validation-for="PostalCode"></span>
+
+
+                </div>
+            </div>
+            <div class="text-right">
+                <button class="btn btn-primary">Create Contact</button>
+            </div>
+        </div>
+    </div>
+</form>

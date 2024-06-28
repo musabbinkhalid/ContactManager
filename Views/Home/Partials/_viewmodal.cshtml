@@ -1,0 +1,39 @@
+﻿@model ContactManager.Infrastructure.Entities.Contact
+
+
+<div class="row">
+    <div class="col-12">
+        @* Name *@
+        <div class="form-group  row">
+            <label class="col-lg-2 col-form-label font-bold">Name</label>
+            <div class="col-lg-10">
+                @Model.Name
+            </div>
+        </div>
+        @* Email *@
+        <div class="form-group  row">
+            <label class="col-lg-2 col-form-label font-bold">Email</label>
+            <div class="col-lg-10">
+                @Model.Email
+            </div>
+        </div>
+        @* Phone *@
+        <div class="form-group  row">
+            <label class="col-lg-2 col-form-label font-bold">Phone</label>
+            <div class="col-lg-10">
+                @Model.Phone
+            </div>
+        </div>
+        @* Address *@
+        <div class="form-group  row">
+            <label class="col-lg-2 col-form-label font-bold">Address</label>
+            <div class="col-lg-10">
+                @Model.Address
+                @Model.City ,
+                @Model.Region , @Model.Country
+                @Model.PostalCode
+                <!--TODO: Map Here-->
+            </div>
+        </div>
+    </div>
+</div>

@@ -5,9 +5,9 @@ namespace ContactManager.Infrastructure
 {
     public class CMContextSeed : IDbSeeder
     {
-        public async Task SeedAsync()
+        public Contact AddInitalContact()
         {
-            var Contact = new Contact
+            return new Contact
             {
                 Id = 1,
                 Name = "Test",

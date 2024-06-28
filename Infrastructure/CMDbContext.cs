@@ -1,4 +1,5 @@
 ﻿using ContactManager.Infrastructure.Entities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
 
@@ -15,7 +16,7 @@ namespace ContactManager.Infrastructure
         public DbSet<Contact> Contacts { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
-
+            builder.Entity<Contact>().HasData(_dataSeeder.AddInitalContact());
             base.OnModelCreating(builder);
         }
     }

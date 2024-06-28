@@ -5,6 +5,6 @@ namespace ContactManager.Infrastructure
 {
     public interface IDbSeeder
     {
-        Task SeedAsync();
+        Contact AddInitalContact();
     }
 }

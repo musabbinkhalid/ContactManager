@@ -1,4 +1,5 @@
 using ContactManager.Infrastructure;
+using ContactManager.Infrastructure.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -10,6 +11,8 @@ builder.Services.AddDbContext<CMDbContext>(options =>
 options.UseSqlServer(
                   builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddSingleton<IDbSeeder, CMContextSeed>();
+builder.Services.AddTransient<IRepository, Repository>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
